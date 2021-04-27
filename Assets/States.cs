@@ -16,6 +16,9 @@ public class GoToPlayer : State
             owner.GetComponent<Boid>().player.transform.position,
             owner.transform.position) < 10)
         {
+            owner.GetComponent<Boid>().ball.transform.parent = null;
+            
+            
             owner.ChangeState(new LookAtPlayer());
         }
     }
@@ -82,6 +85,7 @@ public class GoToBall : State
     public override void Exit()
     {
         owner.GetComponent<Seek>().enabled = false;
+        owner.GetComponent<Boid>().ball.transform.parent = owner.transform;
     }
 
 }
