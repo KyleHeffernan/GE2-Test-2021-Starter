@@ -16,14 +16,7 @@ public class GoToPlayer : State
             owner.GetComponent<Boid>().player.transform.position,
             owner.transform.position) < 10)
         {
-            /*
-            if(owner.GetComponent<Boid>().ball.transform.parent != null)
-            {
-                owner.GetComponent<Boid>().ball.transform.position = owner.GetComponent<Boid>().player.transform.position;
-            }
-            */
             
-
 
             owner.GetComponent<Boid>().ball.transform.parent = null;
             //Vector3 add1 = new Vector3(1,0,0);
@@ -53,6 +46,10 @@ public class LookAtPlayer : State
     
     public override void Think()
     {
+        Vector3 dist = owner.GetComponent<Boid>().player.transform.position - owner.transform.position;
+
+        owner.transform.rotation = Quaternion.Slerp(owner.transform.rotation, Quaternion.LookRotation(dist), Time.deltaTime );
+
         if (Vector3.Distance(
             owner.GetComponent<Boid>().ball.transform.position,
             owner.GetComponent<Boid>().player.transform.position) > 10)
