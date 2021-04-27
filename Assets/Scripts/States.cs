@@ -13,14 +13,25 @@ public class GoToPlayer : State
 
     public override void Think()
     {
+        if(owner.GetComponent<Boid>().ball.transform.parent != null)
+        {
+            owner.GetComponent<Boid>().ball.GetComponent<Rigidbody>().useGravity = false;
+            owner.GetComponent<Boid>().ball.GetComponent<Rigidbody>().isKinematic = true;
+        }
+
         //Checking distance between dog and player
         if (Vector3.Distance(
             owner.GetComponent<Boid>().player.transform.position,
             owner.transform.position) < 10)
         {
+            owner.GetComponent<Boid>().ball.GetComponent<Rigidbody>().useGravity = true;
+            owner.GetComponent<Boid>().ball.GetComponent<Rigidbody>().isKinematic = false;
+
             owner.GetComponent<Boid>().ball.transform.parent = null;
             owner.ChangeState(new LookAtPlayer());
         }
+
+
     }
 
     public override void Exit()
