@@ -8,6 +8,8 @@ public class ThrowBall : MonoBehaviour
 
     public float ballSpeed = 1.0f;
 
+    public float lastThrow = 0.0f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -24,10 +26,15 @@ public class ThrowBall : MonoBehaviour
     {
         if(Input.GetButton("Space"))
         {
-            ball.transform.position = this.transform.position;
-            Rigidbody rb = ball.GetComponent<Rigidbody>();
-            rb.velocity = Vector3.zero;
-            rb.AddForce(transform.forward * ballSpeed);
+            if(lastThrow < Time.time - 1)
+            {
+                ball.transform.position = this.transform.position;
+                Rigidbody rb = ball.GetComponent<Rigidbody>();
+                rb.velocity = Vector3.zero;
+                rb.AddForce(transform.forward * ballSpeed);
+                lastThrow = Time.time;
+            }
+
         }
         
 
