@@ -34,7 +34,7 @@ public class LookAtPlayer : State
     {
         owner.GetComponent<Seek>().enabled = false;
         owner.GetComponent<Boid>().velocity = Vector3.zero;
-        owner.GetComponent<Boid>().velocity = Vector3.zero;
+        owner.GetComponent<Boid>().acceleration = Vector3.zero;
         
     }
     
@@ -42,15 +42,15 @@ public class LookAtPlayer : State
     {
         if (Vector3.Distance(
             owner.GetComponent<Boid>().ball.transform.position,
-            owner.GetComponent<Boid>().player.transform.position) > 5)
+            owner.GetComponent<Boid>().player.transform.position) > 10)
         {
-            owner.ChangeState(new GoToPlayer());
+            owner.ChangeState(new GoToBall());
         }
     }
     
     public override void Exit()
     {
-        owner.GetComponent<Seek>().enabled = true;
+        //owner.GetComponent<Seek>().enabled = true;
     }
 
 }
@@ -59,6 +59,7 @@ public class GoToBall : State
 {
         public override void Enter()
     {
+        owner.GetComponent<Seek>().targetGameObject = owner.GetComponent<Boid>().ball;
         owner.GetComponent<Seek>().enabled = true;
     }
 
