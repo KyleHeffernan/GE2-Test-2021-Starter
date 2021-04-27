@@ -16,12 +16,18 @@ public class GoToPlayer : State
             owner.GetComponent<Boid>().player.transform.position,
             owner.transform.position) < 10)
         {
-
+            /*
             if(owner.GetComponent<Boid>().ball.transform.parent != null)
             {
                 owner.GetComponent<Boid>().ball.transform.position = owner.GetComponent<Boid>().player.transform.position;
             }
+            */
+            
+
+
             owner.GetComponent<Boid>().ball.transform.parent = null;
+            //Vector3 add1 = new Vector3(1,0,0);
+            //owner.GetComponent<Boid>().ball.transform.position = owner.GetComponent<Boid>().ball.transform.position + add1;
             
             owner.ChangeState(new LookAtPlayer());
         }
@@ -49,7 +55,7 @@ public class LookAtPlayer : State
     {
         if (Vector3.Distance(
             owner.GetComponent<Boid>().ball.transform.position,
-            owner.GetComponent<Boid>().player.transform.position) > 5)
+            owner.GetComponent<Boid>().player.transform.position) > 10)
         {
             owner.ChangeState(new GoToBall());
         }
