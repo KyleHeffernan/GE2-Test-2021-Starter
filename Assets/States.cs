@@ -93,6 +93,7 @@ public class GoToBall : State
     {
         owner.GetComponent<Seek>().enabled = false;
         owner.GetComponent<Boid>().ball.transform.parent = owner.transform;
+        owner.GetComponent<Boid>().ball.transform.position = owner.GetComponent<Boid>().attachPoint.position;
     }
 
 }

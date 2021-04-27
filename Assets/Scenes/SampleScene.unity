@@ -976,6 +976,7 @@ MonoBehaviour:
   maxSpeed: 5
   maxForce: 10
   player: {fileID: 2102073108}
+  attachPoint: {fileID: 1296423583}
   ball: {fileID: 1332434774}
 --- !u!114 &1503941573
 MonoBehaviour:

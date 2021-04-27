@@ -22,6 +22,8 @@ public class Boid : MonoBehaviour
 
     public GameObject player;
 
+    public Transform attachPoint;
+
     public GameObject ball;
 
     
