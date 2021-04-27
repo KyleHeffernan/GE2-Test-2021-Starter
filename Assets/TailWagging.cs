@@ -10,16 +10,19 @@ public class TailWagging : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        theta = 0;
+        theta = 2;
         
     }
 
     // Update is called once per frame
     void Update()
     {
+        
+        theta = theta + Mathf.PI * 2.0f * Time.deltaTime * frequency * GetComponentInParent<Boid>().velocity.magnitude;
         float angle = Mathf.Sin(theta) * amplitude;
         Quaternion q = Quaternion.AngleAxis(angle, Vector3.right);
         transform.localRotation = q;
-        theta += Mathf.PI * 2.0f * Time.deltaTime * frequency * this.GetComponentInParent<Rigidbody>().velocity.magnitude;
+        
+        
     }
 }
