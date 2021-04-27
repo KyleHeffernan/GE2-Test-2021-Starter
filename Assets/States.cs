@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class GoToPlayer : State
 {
-        public override void Enter()
+    public override void Enter()
     {
+        owner.GetComponent<Seek>().targetGameObject = owner.GetComponent<Boid>().player;
         owner.GetComponent<Seek>().enabled = true;
     }
 
@@ -32,13 +33,16 @@ public class LookAtPlayer : State
         public override void Enter()
     {
         owner.GetComponent<Seek>().enabled = false;
+        owner.GetComponent<Boid>().velocity = Vector3.zero;
+        owner.GetComponent<Boid>().velocity = Vector3.zero;
+        
     }
     
     public override void Think()
     {
         if (Vector3.Distance(
             owner.GetComponent<Boid>().ball.transform.position,
-            owner.GetComponent<Boid>().player.transform.position) < 1)
+            owner.GetComponent<Boid>().player.transform.position) > 5)
         {
             owner.ChangeState(new GoToPlayer());
         }
