@@ -13,6 +13,7 @@ public class GoToPlayer : State
 
     public override void Think()
     {
+        //Making ball float in dogs mouth
         if(owner.GetComponent<Boid>().ball.transform.parent != null)
         {
             owner.GetComponent<Boid>().ball.GetComponent<Rigidbody>().useGravity = false;
