@@ -16,8 +16,12 @@ public class GoToPlayer : State
             owner.GetComponent<Boid>().player.transform.position,
             owner.transform.position) < 10)
         {
+
+            if(owner.GetComponent<Boid>().ball.transform.parent != null)
+            {
+                owner.GetComponent<Boid>().ball.transform.position = owner.GetComponent<Boid>().player.transform.position;
+            }
             owner.GetComponent<Boid>().ball.transform.parent = null;
-            owner.GetComponent<Boid>().ball.transform.position = owner.GetComponent<Boid>().player.transform.position;
             
             owner.ChangeState(new LookAtPlayer());
         }

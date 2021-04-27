@@ -1277,5 +1277,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ball: {fileID: 1332434774}
-  ballSpeed: 500
+  ballSpeed: 700
   lastThrow: 0
