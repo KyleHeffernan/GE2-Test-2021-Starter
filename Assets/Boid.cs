@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class Boid : MonoBehaviour
 {
     List<SteeringBehaviour> behaviours = new List<SteeringBehaviour>();
@@ -22,12 +23,14 @@ public class Boid : MonoBehaviour
     public GameObject player;
 
     public GameObject ball;
+
     
 
 
     // Use this for initialization
     void Start()
     {
+        
 
         SteeringBehaviour[] behaviours = GetComponents<SteeringBehaviour>();
 

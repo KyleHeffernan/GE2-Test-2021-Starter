@@ -42,7 +42,7 @@ public class LookAtPlayer : State
     {
         if (Vector3.Distance(
             owner.GetComponent<Boid>().ball.transform.position,
-            owner.GetComponent<Boid>().player.transform.position) > 10)
+            owner.GetComponent<Boid>().player.transform.position) > 5)
         {
             owner.ChangeState(new GoToBall());
         }
@@ -57,10 +57,16 @@ public class LookAtPlayer : State
 
 public class GoToBall : State
 {
-        public override void Enter()
+    public override void Enter()
     {
+        AudioSource audio = owner.GetComponent<AudioSource>();
+        audio.Play();
+
+
+
         owner.GetComponent<Seek>().targetGameObject = owner.GetComponent<Boid>().ball;
         owner.GetComponent<Seek>().enabled = true;
+
     }
 
     public override void Think()
