@@ -17,7 +17,7 @@ public class TailWagging : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        //Moving the tail back and forth, affected by magnitude of dog
         theta = theta + Mathf.PI * 2.0f * Time.deltaTime * frequency * GetComponentInParent<Boid>().velocity.magnitude;
         float angle = Mathf.Sin(theta) * amplitude;
         Quaternion q = Quaternion.AngleAxis(angle, Vector3.right);

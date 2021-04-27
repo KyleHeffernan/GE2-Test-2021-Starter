@@ -26,12 +26,17 @@ public class ThrowBall : MonoBehaviour
     {
         if(Input.GetButton("Space"))
         {
+            //Checking the 1 Second throw cooldown
             if(lastThrow < Time.time - 1)
             {
+                //Moves ball to player
                 ball.transform.position = this.transform.position;
                 Rigidbody rb = ball.GetComponent<Rigidbody>();
+                //Resets velocity
                 rb.velocity = Vector3.zero;
+                //Adds a throwing force to ball
                 rb.AddForce(transform.forward * ballSpeed);
+                //Setting 1 second cooldown
                 lastThrow = Time.time;
             }
 
