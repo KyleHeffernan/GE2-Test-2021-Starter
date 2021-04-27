@@ -19,7 +19,7 @@ public class TailWagging : MonoBehaviour
     {
         float angle = Mathf.Sin(theta) * amplitude;
         Quaternion q = Quaternion.AngleAxis(angle, Vector3.right);
-        transform.rotation = q;
-        theta += Mathf.PI * 2.0f * Time.deltaTime * frequency;
+        transform.localRotation = q;
+        theta += Mathf.PI * 2.0f * Time.deltaTime * frequency * this.GetComponentInParent<Rigidbody>().velocity.magnitude;
     }
 }
